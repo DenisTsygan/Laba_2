@@ -10,21 +10,21 @@ namespace Laba_2
             Task_192();
             Console.WriteLine(" --------------------------------------------------------------");
 
-            Console.WriteLine("TASK 199");
-            Task_199();
-            Console.WriteLine(" --------------------------------------------------------------");
+            //Console.WriteLine("TASK 199");
+            //Task_199();
+            //Console.WriteLine(" --------------------------------------------------------------");
 
-            Console.WriteLine("TASK 8");
-            Task_8();
-            Console.WriteLine(" --------------------------------------------------------------");
+            //Console.WriteLine("TASK 8");
+            //Task_8();
+            //Console.WriteLine(" --------------------------------------------------------------");
 
-            Console.WriteLine("TASK 45");
-            Task_45();
-            Console.WriteLine(" --------------------------------------------------------------");
+            //Console.WriteLine("TASK 45");
+            //Task_45();
+            //Console.WriteLine(" --------------------------------------------------------------");
 
-            Console.WriteLine("TASK 106");
-            Task_106();
-            Console.WriteLine(" --------------------------------------------------------------");
+            //Console.WriteLine("TASK 106");
+            //Task_106();
+            //Console.WriteLine(" --------------------------------------------------------------");
 
         }
         /// <summary>
@@ -34,30 +34,33 @@ namespace Laba_2
         {
             int sizeArray = RandomGenerator.getRandomIntegerValue();
             int[] array = RandomGenerator.getRandomIntegersArray(sizeArray,20,true,0);
+            //int[] array = { 1, 2, 3, 3, 4, 5 };
+
             Console.WriteLine("Array before :");
             Console.WriteLine(String.Join(" ; ", array));
-
-            int maximumValue = array[0];
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > maximumValue)
-                {
-                    maximumValue = array[i];
-                }
-            }
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
                 {
                     if (array[i] == array[j])
                     {
-                        maximumValue++;
-                        array[j] = maximumValue;
+                        array[j]=-1;
                     }
                 }
             }
+            int[] uniqueArray = new int[array.Length];
+            int indexUniqueArray = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != -1)
+                {
+                    uniqueArray[indexUniqueArray] = array[i];
+                    indexUniqueArray++;
+                }
+            }
+            Array.Resize(ref uniqueArray, indexUniqueArray);
             Console.WriteLine("Array after :");
-            Console.WriteLine(String.Join(" ; ", array));
+            Console.WriteLine(String.Join(" ; ", uniqueArray));
         }
         /// <summary>
         /// Известно, что в массиве имеются элементы, большие 65 Определить:
